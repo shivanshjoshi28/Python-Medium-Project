@@ -24,7 +24,7 @@ else:
 inp = input()
 
 # Here The file is being processed to get the score of a person if present
-ratingfile = open("rating.txt", 'r')
+ratingfile = open("rating.txt", 'r+')
 t = ratingfile.read()
 if(name not in t):
     score = 0
@@ -51,3 +51,13 @@ while(inp != '!exit'):
             print(f"Well done. Computer chose {handtype[guessind]} and failed")
             score += 100
     inp = input()
+ratingfile.seek(0)
+print(score)
+t = ratingfile.readlines()
+ratingfile = open("rating.txt", 'w')
+for line in t:
+    if name not in line:
+        ratingfile.write(line)
+ratingfile.seek(0, 2)
+ratingfile.write("\n"+name+" "+str(score))
+ratingfile.close()

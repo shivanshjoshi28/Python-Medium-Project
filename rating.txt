@@ -1,0 +1,4 @@
+monika 100
+shivansh 150
+ayushi 150
+nachiket 50
